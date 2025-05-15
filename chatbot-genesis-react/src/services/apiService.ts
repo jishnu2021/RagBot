@@ -2,9 +2,12 @@ import axios, { AxiosError } from 'axios';
 
 // Determine the API URL based on the environment
 const getApiUrl = () => {
-  // For production build, use environment variable or default to the render.com URL
+  // Get the deployed URL from the environment or from the window location
   if (import.meta.env.PROD) {
-    return import.meta.env.VITE_API_URL || 'https://rag-chatbot-backend-iqiy.onrender.com';
+    // Explicitly use the correct backend URL
+    const backendUrl = import.meta.env.VITE_API_URL || 'https://rag-chatbot-backend-iqiy.onrender.com';
+    console.log('Using production backend URL:', backendUrl);
+    return backendUrl;
   }
   // For development, use localhost
   return 'http://localhost:5000';
@@ -13,6 +16,8 @@ const getApiUrl = () => {
 // Create base URLs
 const BASE_URL = getApiUrl();
 const API_URL = `${BASE_URL}/api`;
+
+console.log('API Service initialized with BASE_URL:', BASE_URL);
 
 // Create axios instance with appropriate configuration
 const apiClient = axios.create({

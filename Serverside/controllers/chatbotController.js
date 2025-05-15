@@ -9,9 +9,14 @@ const path = require('path');
 
 // Helper function to generate base URL
 const getBaseUrl = (req) => {
+  // For production, use the environment variable or default to the deployed backend URL
   if (process.env.NODE_ENV === 'production') {
-    return process.env.BACKEND_URL || 'https://rag-chatbot-backend-iqiy.onrender.com';
+    const backendUrl = process.env.BACKEND_URL || 'https://rag-chatbot-backend-iqiy.onrender.com';
+    console.log('Using production backend URL for links:', backendUrl);
+    return backendUrl;
   }
+  
+  // For local development
   return `${req.protocol}://${req.get('host')}`;
 };
 
