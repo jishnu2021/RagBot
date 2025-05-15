@@ -10,7 +10,7 @@ const path = require('path');
 // Helper function to generate base URL
 const getBaseUrl = (req) => {
   if (process.env.NODE_ENV === 'production') {
-    return process.env.BACKEND_URL || 'https://rag-chatbot-backend.onrender.com';
+    return process.env.BACKEND_URL || 'https://rag-chatbot-backend-iqiy.onrender.com';
   }
   return `${req.protocol}://${req.get('host')}`;
 };

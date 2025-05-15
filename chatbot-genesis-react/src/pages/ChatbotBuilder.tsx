@@ -58,7 +58,7 @@ const ChatbotBuilder = () => {
     if (backendStatus === 'offline') {
       toast({
         title: "Backend server is offline",
-        description: "Please make sure the backend server is running on http://localhost:5000",
+        description: "Please make sure the backend server is running on https://rag-chatbot-backend-iqiy.onrender.com",
         variant: "destructive",
       });
       return;

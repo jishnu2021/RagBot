@@ -4,7 +4,7 @@ import axios, { AxiosError } from 'axios';
 const getApiUrl = () => {
   // For production build, use environment variable or default to the render.com URL
   if (import.meta.env.PROD) {
-    return import.meta.env.VITE_API_URL || 'https://rag-chatbot-backend.onrender.com';
+    return import.meta.env.VITE_API_URL || 'https://rag-chatbot-backend-iqiy.onrender.com';
   }
   // For development, use localhost
   return 'http://localhost:5000';
