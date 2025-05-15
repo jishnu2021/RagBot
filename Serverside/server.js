@@ -26,7 +26,7 @@ const PORT = process.env.PORT || 5000;
 // Configure CORS for production
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production' 
-    ? [process.env.FRONTEND_URL || 'https://rag-chatbot-frontend.onrender.com'] 
+    ? [process.env.FRONTEND_URL || 'https://ragbot-q087.onrender.com'] 
     : 'http://localhost:3000',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
