@@ -23,35 +23,11 @@ if (!process.env.GEMINI_API_KEY) {
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Configure CORS for different environments
-const allowedOrigins = [
-  'http://localhost:3000',
-  'http://localhost:3001',
-  'https://ragbot-q087.onrender.com',
-  process.env.FRONTEND_URL
-].filter(Boolean); // Remove any undefined/null values
-
-console.log('Allowed CORS origins:', allowedOrigins);
-
-const corsOptions = {
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps, curl requests)
-    if (!origin) return callback(null, true);
-    
-    if (allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV !== 'production') {
-      callback(null, true);
-    } else {
-      console.log('CORS blocked origin:', origin);
-      callback(null, true); // Temporarily allow all origins during debugging
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true,
-  optionsSuccessStatus: 200
-};
+// For simplicity, allow all origins during debugging
+app.use(cors());
+console.log('CORS enabled for all origins temporarily for debugging');
 
 // Middleware
-app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -76,7 +52,6 @@ app.get('/health', (req, res) => {
   res.status(200).json({ 
     status: 'ok',
     environment: process.env.NODE_ENV || 'development',
-    allowedOrigins,
     requestOrigin: req.headers.origin || 'unknown'
   });
 });
@@ -89,9 +64,6 @@ app.get('/cors-test', (req, res) => {
     time: new Date().toISOString()
   });
 });
-
-// Handle OPTIONS requests explicitly
-app.options('*', cors(corsOptions));
 
 // Routes
 const chatbotRoutes = require('./routes/chatbotRoutes');

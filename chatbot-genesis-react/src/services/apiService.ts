@@ -26,7 +26,7 @@ const apiClient = axios.create({
     'Content-Type': 'application/json',
   },
   timeout: 60000, // Increased to 60 seconds for normal requests
-  // Enable credentials to send cookies in cross-origin requests if needed
+  // Don't use credentials for cross-origin requests to avoid CORS issues
   withCredentials: false,
 });
 
