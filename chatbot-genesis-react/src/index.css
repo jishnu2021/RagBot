@@ -1,0 +1,105 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 260 10% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 260 10% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 260 10% 10%;
+
+    --primary: 262 84% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 174 84% 32%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 260 10% 96%;
+    --muted-foreground: 260 10% 50%;
+
+    --accent: 260 40% 92%;
+    --accent-foreground: 260 10% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 260 10% 92%;
+    --input: 260 10% 92%;
+    --ring: 262 84% 45%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 260 20% 10%;
+    --foreground: 260 10% 90%;
+
+    --card: 260 20% 12%;
+    --card-foreground: 260 10% 90%;
+
+    --popover: 260 20% 12%;
+    --popover-foreground: 260 10% 90%;
+
+    --primary: 262 64% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 174 64% 32%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 260 20% 16%;
+    --muted-foreground: 260 10% 70%;
+
+    --accent: 260 20% 16%;
+    --accent-foreground: 260 10% 90%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 90%;
+
+    --border: 260 20% 20%;
+    --input: 260 20% 20%;
+    --ring: 262 64% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-lg;
+  }
+
+  .purple-gradient {
+    @apply bg-gradient-to-r from-purple-600 to-indigo-700;
+  }
+
+  .bg-grid {
+    background-image: 
+      linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .bg-grid-dark {
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+}
